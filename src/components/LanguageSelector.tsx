@@ -6,6 +6,7 @@ const LANGUAGES = [
   { code: 'es', label: 'ES' },
   { code: 'fr', label: 'FR' },
   { code: 'de', label: 'DE' },
+  { code: 'vi', label: 'VI' },
 ] as const
 
 export function LanguageSelector() {

@@ -5,8 +5,9 @@ import type { ComponentsJSON } from '@nanostores/i18n'
 import es from './translations/es.json'
 import fr from './translations/fr.json'
 import de from './translations/de.json'
+import vi from './translations/vi.json'
 
-const translations: Record<string, ComponentsJSON> = { es, fr, de }
+const translations: Record<string, ComponentsJSON> = { es, fr, de, vi }
 
 export const localeSettings = persistentAtom<string | undefined>(
   'locale',
@@ -15,7 +16,7 @@ export const localeSettings = persistentAtom<string | undefined>(
 
 export const locale = localeFrom(
   localeSettings,
-  browser({ available: ['en', 'es', 'fr', 'de'] as const, fallback: 'en' })
+  browser({ available: ['en', 'es', 'fr', 'de', 'vi'] as const, fallback: 'en' })
 )
 
 export const i18n = createI18n(locale, {
