@@ -5,7 +5,7 @@ import compression from 'vite-plugin-compression'
 export default defineConfig({
   plugins: [
     preact(),
-    compression({ algorithm: 'gzip' })
+    compression({ algorithm: 'gzip', verbose: false, deleteOriginFile: true })
   ],
   build: {
     outDir: 'dist',

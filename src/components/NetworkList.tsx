@@ -1,6 +1,8 @@
 import { useState } from 'preact/hooks';
+import { useStore } from '@nanostores/preact';
 import { Card } from './ui/Card';
 import { Button } from './ui/Button';
+import { networkMessages } from '../i18n/messages/networks';
 import type { ScanResult } from '../types';
 import { api } from '../api/client';
 import './NetworkList.css';
@@ -46,18 +48,20 @@ export function NetworkList({ onConnect }: Props) {
     }
   };
 
+  const t = useStore(networkMessages);
+
   return (
     <Card
-      title="Available Networks"
+      title={t.title}
       action={
         <Button size="sm" variant="secondary" onClick={scan} loading={scanning}>
-          Scan
+          {t.scan}
         </Button>
       }
     >
       {networks.length === 0 ? (
         <div class="network-empty">
-          {scanning ? 'Scanning...' : 'Click Scan to find networks'}
+          {scanning ? t.scanning : t.empty}
         </div>
       ) : (
         <div class="network-list">
@@ -66,7 +70,7 @@ export function NetworkList({ onConnect }: Props) {
               <div class="network-info">
                 <div class="network-ssid">
                   {net.auth !== 'OPEN' && <span class="lock">🔒</span>}
-                  {net.ssid || '(hidden)'}
+                  {net.ssid || t.hidden}
                 </div>
                 <div class="network-meta text-sm text-muted">
                   {net.rssi} dBm • {net.auth}
@@ -76,7 +80,7 @@ export function NetworkList({ onConnect }: Props) {
                 size="sm"
                 onClick={() => setSelectedSsid(selectedSsid === net.ssid ? null : net.ssid)}
               >
-                {selectedSsid === net.ssid ? 'Cancel' : 'Connect'}
+                {selectedSsid === net.ssid ? t.cancel : t.connect}
               </Button>
 
               {selectedSsid === net.ssid && (
@@ -84,7 +88,7 @@ export function NetworkList({ onConnect }: Props) {
                   {net.auth !== 'OPEN' && (
                     <input
                       type="password"
-                      placeholder="Password"
+                      placeholder={t.password}
                       value={password}
                       onInput={(e) => setPassword((e.target as HTMLInputElement).value)}
                     />
@@ -94,7 +98,7 @@ export function NetworkList({ onConnect }: Props) {
                     loading={connecting}
                     class="w-full"
                   >
-                    Connect
+                    {t.connect}
                   </Button>
                 </div>
               )}

@@ -1,0 +1,32 @@
+{
+  "app": {
+    "title": "Gestor WiFi ESP"
+  },
+  "status": {
+    "loading": "Cargando...",
+    "error": "No se pudo cargar el estado",
+    "connected": "Conectado a \"{ssid}\"",
+    "disconnected": "Desconectado"
+  },
+  "networks": {
+    "title": "Redes disponibles",
+    "scan": "Escanear",
+    "scanning": "Escaneando...",
+    "empty": "Pulse Escanear para buscar redes",
+    "hidden": "(oculta)",
+    "cancel": "Cancelar",
+    "connect": "Conectar",
+    "password": "Contraseña"
+  },
+  "saved": {
+    "title": "Redes guardadas",
+    "cancel": "Cancelar",
+    "add": "+ Añadir",
+    "ssid": "SSID",
+    "passwordOptional": "Contraseña (opcional)",
+    "addNetwork": "Añadir red",
+    "loading": "Cargando...",
+    "empty": "Sin redes guardadas",
+    "priority": "Prioridad: {priority}"
+  }
+}
